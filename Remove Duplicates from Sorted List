@@ -1,0 +1,45 @@
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        temp_head = head
+        
+        stack = []
+        
+        
+        while temp_head!=None:
+            
+            stack.append(temp_head.val)
+            
+            
+            temp_head = temp_head.next
+            
+        stack = list(set(stack))
+        stack.sort()
+        
+        
+        temp_head = head
+        
+        
+        for i in range(len(stack)):
+            
+            temp_head.val = stack[i]
+            
+            
+            if len(stack)-1==i:
+                temp_head.next = None
+                
+               
+             
+            temp_head = temp_head.next
+                
+            
+                
+        temp_head = None
+        
+        return head
