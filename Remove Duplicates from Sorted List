@@ -4,6 +4,76 @@ Given the head of a sorted linked list, delete all duplicates such that each ele
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+"""
+Using hashmap
+"""
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        temp_head = head
+        
+        stack = {}
+        
+        
+        while temp_head!=None:
+            if stack.get(temp_head.val) == None: 
+                stack[temp_head.val] = temp_head.val
+            
+            
+            
+            temp_head = temp_head.next
+            
+        stack = list(stack.keys())
+        
+        
+        temp_head = head
+        
+        
+        for i in range(len(stack)):
+            
+            temp_head.val = stack[i]
+            
+            
+            if len(stack)-1==i:
+                temp_head.next = None
+                
+               
+             
+            temp_head = temp_head.next
+                
+            
+                
+        temp_head = None
+        
+        return head
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+without Using hashmap
+"""
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
